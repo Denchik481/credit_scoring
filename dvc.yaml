@@ -1,0 +1,88 @@
+stages:
+  make_features_application_train_test:
+    cmd: python src/app/modelling/features/features_application_train_test.py --output_file src/app/modelling/data_features/features_application_train_test.csv
+    deps:
+    - src/app/modelling/features/features_application_train_test.py
+    - src/config/db_config.py
+    - src/app/utils/db_handler.py
+    outs:
+    - src/app/modelling/data_features/features_application_train_test.csv
+
+  make_features_bureau_balance:
+    cmd: python src/app/modelling/features/features_bureau_balance.py --output_file src/app/modelling/data_features/features_bureau_balance.csv
+    deps:
+      - src/app/modelling/features/features_bureau_balance.py
+      - src/config/db_config.py
+      - src/app/utils/db_handler.py
+    outs:
+      - src/app/modelling/data_features/features_bureau_balance.csv
+
+  make_features_bureau:
+    cmd: python src/app/modelling/features/features_bureau.py --output_file src/app/modelling/data_features/features_bureau.csv
+    deps:
+      - src/app/modelling/features/features_bureau.py
+      - src/config/db_config.py
+      - src/app/utils/db_handler.py
+    outs:
+      - src/app/modelling/data_features/features_bureau.csv
+
+  make_features_credit_card_balance:
+    cmd: python src/app/modelling/features/features_credit_card_balance.py --output_file src/app/modelling/data_features/features_credit_card_balance.csv
+    deps:
+      - src/app/modelling/features/features_credit_card_balance.py
+      - src/config/db_config.py
+      - src/app/utils/db_handler.py
+    outs:
+      - src/app/modelling/data_features/features_credit_card_balance.csv
+
+  make_features_installments_payments:
+    cmd: python src/app/modelling/features/features_installments_payments.py --output_file src/app/modelling/data_features/features_installments_payments.csv
+    deps:
+      - src/app/modelling/features/features_installments_payments.py
+      - src/config/db_config.py
+      - src/app/utils/db_handler.py
+    outs:
+      - src/app/modelling/data_features/features_installments_payments.csv
+
+  make_features_previous_application:
+    cmd: python src/app/modelling/features/features_previous_application.py --output_file src/app/modelling/data_features/features_previous_application.csv
+    deps:
+      - src/app/modelling/features/features_previous_application.py
+      - src/config/db_config.py
+      - src/app/utils/db_handler.py
+    outs:
+      - src/app/modelling/data_features/features_previous_application.csv
+
+  make_fit_model:
+    cmd: python src/app/modelling/model.py --output_file src/app/modelling/data_features/shap_importans_model_first
+    deps:
+      - src/app/modelling/data_features/features_application_train_test.csv
+      - src/app/modelling/data_features/features_bureau_balance.csv
+      - src/app/modelling/data_features/features_bureau.csv
+      - src/app/modelling/data_features/features_credit_card_balance.csv
+      - src/app/modelling/data_features/features_installments_payments.csv
+      - src/app/modelling/data_features/features_previous_application.csv
+    outs:
+      - src/app/modelling/best_logreg_model.pkl
+      - src/app/modelling/best_decision_tree_model.pkl
+      - src/app/modelling/final_model.pkl
+      - src/app/modelling/data_features/shap_importans_model_first
+
+  make_fit_model_tree:
+    cmd: python src/app/modelling/model_tree.py --output_file src/app/modelling/data_features/shap_importans_model_tree
+    deps: 
+      - src/app/modelling/data_features/features_application_train_test.csv
+      - src/app/modelling/data_features/features_bureau_balance.csv
+      - src/app/modelling/data_features/features_bureau.csv 
+      - src/app/modelling/data_features/features_credit_card_balance.csv
+      - src/app/modelling/data_features/features_installments_payments.csv
+      - src/app/modelling/data_features/features_previous_application.csv
+      - src/app/modelling/final_model.pkl
+    outs:
+      - src/app/modelling/data_features/shap_importans_model_tree
+      - src/app/modelling/final_model_2.pkl
+
+
+
+
+  

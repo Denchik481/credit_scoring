@@ -1,0 +1,171 @@
+schema: '2.0'
+stages:
+  make_features_application_train_test:
+    cmd: python src/app/modelling/features/features_application_train_test.py --output_file
+      src/app/modelling/data_features/features_application_train_test.csv
+    deps:
+    - path: src/app/modelling/features/features_application_train_test.py
+      hash: md5
+      md5: d7d253e435b15f48cd38a43402916977
+      size: 17988
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_application_train_test.csv
+      hash: md5
+      md5: 4646c19091a9d78958e6004d5ddfd555
+      size: 278411301
+  make_features_bureau_balance:
+    cmd: python src/app/modelling/features/features_bureau_balance.py --output_file
+      src/app/modelling/data_features/features_bureau_balance.csv
+    deps:
+    - path: src/app/modelling/features/features_bureau_balance.py
+      hash: md5
+      md5: 3af50ce8d616d8fc370de480b9098ff8
+      size: 4356
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_bureau_balance.csv
+      hash: md5
+      md5: c3f649ed9e554d4f28c226a008a349a5
+      size: 13487826
+  make_features_bureau:
+    cmd: python src/app/modelling/features/features_bureau.py --output_file src/app/modelling/data_features/features_bureau.csv
+    deps:
+    - path: src/app/modelling/features/features_bureau.py
+      hash: md5
+      md5: f81dbf925c479a6130e039f0f0ba1662
+      size: 5160
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_bureau.csv
+      hash: md5
+      md5: 80ac8bb0bb83e93da118b5fecd967296
+      size: 100139290
+  make_features_credit_card_balance:
+    cmd: python src/app/modelling/features/features_credit_card_balance.py --output_file
+      src/app/modelling/data_features/features_credit_card_balance.csv
+    deps:
+    - path: src/app/modelling/features/features_credit_card_balance.py
+      hash: md5
+      md5: 161900530d0cc31a10f9ecf21dba1eae
+      size: 15689
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_credit_card_balance.csv
+      hash: md5
+      md5: a02456dc2116d16532eaa7a53f4205b4
+      size: 74997389
+  make_features_installments_payments:
+    cmd: python src/app/modelling/features/features_installments_payments.py --output_file
+      src/app/modelling/data_features/features_installments_payments.csv
+    deps:
+    - path: src/app/modelling/features/features_installments_payments.py
+      hash: md5
+      md5: dee2ac951b7c195eb79347d1c583ed11
+      size: 3184
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_installments_payments.csv
+      hash: md5
+      md5: ff05e6e344af29f744467f2dcae94154
+      size: 35520961
+  make_features_previous_application:
+    cmd: python src/app/modelling/features/features_previous_application.py --output_file
+      src/app/modelling/data_features/features_previous_application.csv
+    deps:
+    - path: src/app/modelling/features/features_previous_application.py
+      hash: md5
+      md5: 5b21e8eb4331c397418d712201df0548
+      size: 3233
+    - path: src/app/utils/db_handler.py
+      hash: md5
+      md5: 2d390665b201253012eaa24ecf7610f2
+      size: 7573
+    - path: src/config/db_config.py
+      hash: md5
+      md5: a0fc73d8c6dfba95bb671ee07f7f1c3a
+      size: 189
+    outs:
+    - path: src/app/modelling/data_features/features_previous_application.csv
+      hash: md5
+      md5: 4007aec2e7b84f641b18860a01909d72
+      size: 34313497
+  make_fit_model:
+    cmd: python src/app/modelling/model.py --output_file src/app/modelling/data_features/shap_importans_model_first
+    deps:
+    - path: src/app/modelling/data_features/features_application_train_test.csv
+      hash: md5
+      md5: 4646c19091a9d78958e6004d5ddfd555
+      size: 278411301
+    - path: src/app/modelling/data_features/features_bureau.csv
+      hash: md5
+      md5: 80ac8bb0bb83e93da118b5fecd967296
+      size: 100139290
+    - path: src/app/modelling/data_features/features_bureau_balance.csv
+      hash: md5
+      md5: c3f649ed9e554d4f28c226a008a349a5
+      size: 13487826
+    - path: src/app/modelling/data_features/features_credit_card_balance.csv
+      hash: md5
+      md5: a02456dc2116d16532eaa7a53f4205b4
+      size: 74997389
+    - path: src/app/modelling/data_features/features_installments_payments.csv
+      hash: md5
+      md5: ff05e6e344af29f744467f2dcae94154
+      size: 35520961
+    - path: src/app/modelling/data_features/features_previous_application.csv
+      hash: md5
+      md5: 4007aec2e7b84f641b18860a01909d72
+      size: 34313497
+    outs:
+    - path: src/app/modelling/best_decision_tree_model.pkl
+      hash: md5
+      md5: 8a07dad881701df2b4da94e7da2235c9
+      size: 2161
+    - path: src/app/modelling/best_logreg_model.pkl
+      hash: md5
+      md5: fde856918bd6175fd52fe620fb91ea20
+      size: 2116
+    - path: src/app/modelling/data_features/shap_importans_model_first
+      hash: md5
+      md5: 1db6709e4c26ac16a37add030d7e5ba0
+      size: 7842
+    - path: src/app/modelling/final_model.pkl
+      hash: md5
+      md5: 5a28465463fc44f1412018b7985d5e4e
+      size: 9152
