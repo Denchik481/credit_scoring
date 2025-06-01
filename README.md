@@ -16,6 +16,7 @@
 
 # 📁 Структура проекта `credit_scoring`
 # credit_scoring
+```
 credit_scoring/ 
 ├── CONTRIBUTING.md 
 ├── dvc.lock 
@@ -76,7 +77,7 @@ credit_scoring/
 │ └── models/ 
 ├── final_model.pkl 
 └── catboost_model.cbm
-
+```
 
 ## Кривая roc-auc для логистической регресии
 1) Для всей выборки
